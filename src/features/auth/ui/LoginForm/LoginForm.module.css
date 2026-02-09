@@ -1,0 +1,227 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.headerIcon {
+  font-size: 20px;
+  color: #000000;
+}
+
+.headerText {
+  width: 419px;
+  max-width: 100%;
+  min-height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.015em;
+  color: #232323;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0;
+  color: #E0E0E0;
+  text-align: center;
+}
+
+.formBlock {
+  width: 399px;
+  max-width: 100%;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form :global(.ant-form-item) {
+  margin-bottom: 20px;
+}
+
+.form :global(.ant-form-item-label label) {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.015em;
+  color: #232323;
+}
+
+.form :global(.ant-form-item:last-of-type) {
+  margin-bottom: 0;
+}
+
+.inputRow :global(.ant-form-item-control-input),
+.inputRow :global(.ant-form-item-control-input-content) {
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+}
+
+.inputRow :global(.ant-form-item-control-input-content) {
+  display: block !important;
+}
+
+.input :global(.ant-input),
+.input :global(.ant-input-affix-wrapper) {
+  width: 100%;
+  height: 100% !important;
+  min-height: 100% !important;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #EDEDED;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.input :global(.ant-input-affix-wrapper) {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.input :global(.ant-input-affix-wrapper .ant-input-prefix),
+.input :global(.ant-input-affix-wrapper .ant-input-suffix) {
+  display: flex;
+  align-items: center;
+  margin-inline-end: 0;
+}
+
+.input :global(.ant-input-affix-wrapper .ant-input) {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 0 0 8px;
+  line-height: 1.5;
+  align-self: center;
+}
+
+
+.input :global(.ant-input-affix-wrapper:hover),
+.input :global(.ant-input:hover) {
+  border-color: #242EDB;
+}
+
+.input :global(.ant-input-affix-wrapper-focused),
+.input :global(.ant-input:focus) {
+  border-color: #242EDB;
+  box-shadow: 0 0 0 2px rgba(36, 46, 219, 0.1);
+}
+
+.inputIcon {
+  color: #E0E0E0;
+  margin-right: 8px;
+}
+
+.form :global(.ant-input-password-icon),
+.form :global(.ant-input-clear-icon),
+.form :global(.ant-input-affix-wrapper .ant-input-suffix .anticon) {
+  color: #E0E0E0 !important;
+}
+
+.form :global(.ant-input-password-icon .anticon),
+.form :global(.ant-input-suffix span.anticon) {
+  color: #E0E0E0 !important;
+}
+
+.form :global(.ant-input-password-icon:hover),
+.form :global(.ant-input-password-icon:hover .anticon),
+.form :global(.ant-input-clear-icon:hover) {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+
+
+.checkbox {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.submitItem {
+  margin-bottom: 0 !important;
+}
+
+.submitBtn {
+  height: 44px;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 6px;
+  background: #242EDB !important;
+  border-color: #242EDB !important;
+}
+
+.submitBtn:hover {
+  background: #1e26b8 !important;
+  border-color: #1e26b8 !important;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+.separatorLine {
+  flex: 1;
+  height: 1px;
+  background: #E0E0E0;
+}
+
+.separatorText {
+  font-size: 0.875rem;
+  color: #E0E0E0;
+}
+
+.footer {
+  margin: 0;
+  width: 100%;
+  max-width: 419px;
+  font-size: 0.875rem;
+  line-height: 27px;
+  color: #6C6C6C;
+  text-align: center;
+}
+
+.link {
+  color: #242EDB;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: #1e26b8;
+}

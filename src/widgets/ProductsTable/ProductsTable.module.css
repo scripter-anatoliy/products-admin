@@ -1,0 +1,143 @@
+.nameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nameTitle {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.nameCategory {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.vendorCell {
+  font-weight: 600;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionPlus {
+  width: 52px;
+  height: 27px;
+  min-width: 52px;
+  padding: 0 !important;
+  border-radius: 23px !important;
+  background: #242EDB !important;
+  border-color: #242EDB !important;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionPlus:hover {
+  background: #1e26b8 !important;
+  border-color: #1e26b8 !important;
+}
+
+.actionDots {
+  color: #B2B3B9;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionDots:hover {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.table :global(.ant-table-thead > tr > th) {
+  background: #fafafa;
+  font-weight: 600;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.table :global(.ant-table-tbody tr.ant-table-row-selected) {
+  background: #F9F9F9 !important;
+}
+
+.table :global(.ant-table-tbody tr.ant-table-row-selected > td:first-child) {
+  position: relative;
+}
+
+.table :global(.ant-table-tbody tr.ant-table-row-selected > td:first-child::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: #3C538E;
+}
+
+.table :global(.ant-checkbox-inner) {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+}
+
+.table :global(.ant-checkbox-checked .ant-checkbox-inner) {
+  background: #3C538E !important;
+  border-color: #3C538E !important;
+}
+
+.table :global(.ant-checkbox-checked .ant-checkbox-inner::after) {
+  display: none;
+}
+
+.table :global(.ant-checkbox-wrapper:hover .ant-checkbox-inner),
+.table :global(.ant-checkbox:hover .ant-checkbox-inner) {
+  border-color: #3C538E;
+}
+
+.table :global(.ant-pagination-item-active) {
+  background: #797FE9 !important;
+  border-color: #797FE9 !important;
+}
+
+.table :global(.ant-pagination-item-active a) {
+  color: #fff !important;
+}
+
+.table :global(.ant-table-pagination) {
+  margin: 16px 0 0 !important;
+}
+
+.table :global(.ant-pagination) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.table :global(.ant-pagination-total-text) {
+  flex-shrink: 0;
+  margin-right: auto;
+}
+
+.ratingValueLow {
+  color: #ff4d4f;
+  font-weight: 500;
+}
+
+.paginationGray {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.paginationBlack {
+  color: rgba(0, 0, 0, 0.88);
+}

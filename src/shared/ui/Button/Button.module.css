@@ -1,0 +1,43 @@
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn.fullWidth {
+  width: 100%;
+}
+
+.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.secondary {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.secondary:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.ghost {
+  background: transparent;
+  color: #374151;
+}
+
+.ghost:hover:not(:disabled) {
+  background: #f3f4f6;
+}

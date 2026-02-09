@@ -1,0 +1,1 @@
+export { IconGlobal } from './IconGlobal'

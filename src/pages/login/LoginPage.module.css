@@ -1,0 +1,42 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  padding: 24px;
+}
+
+.content {
+  width: 527px;
+  min-width: 527px;
+  height: 716px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 34px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 24px;
+  background: #FAFAFA;
+  padding: 48px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 100%);
+}
