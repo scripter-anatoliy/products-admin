@@ -145,6 +145,18 @@
   margin-right: 8px;
 }
 
+.eyeSuffix {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #E0E0E0;
+  user-select: none;
+}
+
+.eyeSuffix:hover {
+  color: rgba(0, 0, 0, 0.65);
+}
+
 .form :global(.ant-input-password-icon),
 .form :global(.ant-input-clear-icon),
 .form :global(.ant-input-affix-wrapper .ant-input-suffix .anticon) {

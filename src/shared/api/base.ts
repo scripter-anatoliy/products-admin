@@ -1,7 +1,6 @@
-// В production (gh-pages) запросы идут через CORS-прокси, иначе браузер блокирует cross-origin
-const API_BASE = import.meta.env.DEV
-  ? "/api"
-  : "https://corsproxy.io/?https://dummyjson.com";
+// В dev — прокси Vite; в production — прямой запрос (DummyJSON отдаёт CORS-заголовки)
+const API_BASE = import.meta.env.DEV ? "/api" : "https://dummyjson.com";
+const IS_PROD = !import.meta.env.DEV;
 
 export type RequestConfig = RequestInit & {
   token?: string | null;
@@ -22,7 +21,8 @@ export async function request<T>(
   const res = await fetch(url, {
     ...init,
     headers,
-    credentials: "include",
+    // В production без cookies, чтобы не ломать CORS (DummyJSON не поддерживает credentials)
+    credentials: IS_PROD ? "omit" : "include",
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok)

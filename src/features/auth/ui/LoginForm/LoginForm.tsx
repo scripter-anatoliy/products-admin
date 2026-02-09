@@ -1,43 +1,48 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Form, Input, Checkbox, Button } from 'antd'
-import { LoginIcon } from './LoginIcon'
-import { PasswordEyeIcon } from './PasswordEyeIcon'
-import { ClearIcon } from './ClearIcon'
-import { LockIcon } from './LockIcon'
-import { MailIcon } from './MailIcon'
-import { useAuthStore } from '@/entities/auth'
-import { login, ApiError } from '@/entities/auth/api/login'
-import styles from './LoginForm.module.css'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Checkbox, Button } from "antd";
+import { LoginIcon } from "./LoginIcon";
+import { PasswordEyeIcon } from "./PasswordEyeIcon";
+import { ClearIcon } from "./ClearIcon";
+import { LockIcon } from "./LockIcon";
+import { MailIcon } from "./MailIcon";
+import { useAuthStore } from "@/entities/auth";
+import { login, ApiError } from "@/entities/auth/api/login";
+import styles from "./LoginForm.module.css";
 
-type FieldType = { username: string; password: string; remember?: boolean }
+type FieldType = { username: string; password: string; remember?: boolean };
 
 export function LoginForm() {
-  const navigate = useNavigate()
-  const setToken = useAuthStore((s) => s.setToken)
-  const [form] = Form.useForm<FieldType>()
-  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+  const setToken = useAuthStore((s) => s.setToken);
+  const [form] = Form.useForm<FieldType>();
+  const [loading, setLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const onFinish = async (values: FieldType) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await login({
         username: values.username.trim(),
         password: values.password,
-      })
-      setToken(res.accessToken, !!values.remember)
-      navigate('/', { replace: true })
+      });
+      setToken(res.accessToken, !!values.remember);
+      navigate("/", { replace: true });
     } catch (err) {
       form.setFields([
         {
-          name: 'password',
-          errors: [err instanceof ApiError ? err.message : 'Ошибка входа. Проверьте данные.'],
+          name: "password",
+          errors: [
+            err instanceof ApiError
+              ? err.message
+              : "Ошибка входа. Проверьте данные.",
+          ],
         },
-      ])
+      ]);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className={styles.wrap}>
@@ -58,53 +63,78 @@ export function LoginForm() {
           initialValues={{ remember: false }}
           className={styles.form}
         >
-        <Form.Item<FieldType>
-          label="Почта"
-          name="username"
-          rules={[{ required: true, message: 'Обязательное поле' }]}
-          className={styles.inputRow}
-        >
-          <Input
-            prefix={<span className={styles.inputIcon}><MailIcon /></span>}
-            placeholder="test@mail.com"
-            allowClear={{ clearIcon: <ClearIcon /> }}
-            autoComplete="username"
-            className={styles.input}
-          />
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="Пароль"
-          name="password"
-          rules={[{ required: true, message: 'Обязательное поле' }]}
-          className={styles.inputRow}
-        >
-          <Input.Password
-            prefix={<span className={styles.inputIcon}><LockIcon /></span>}
-            placeholder="••••••••••"
-            autoComplete="current-password"
-            className={styles.input}
-            iconRender={(visible) => <PasswordEyeIcon visible={visible} />}
-          />
-        </Form.Item>
-
-        <Form.Item<FieldType> name="remember" valuePropName="checked" className={styles.rememberItem}>
-          <Checkbox className={styles.checkbox}>Запомнить данные</Checkbox>
-        </Form.Item>
-
-        <Form.Item className={styles.submitItem}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            block
-            size="large"
-            loading={loading}
-            className={styles.submitBtn}
+          <Form.Item<FieldType>
+            label="Почта"
+            name="username"
+            rules={[{ required: true, message: "Обязательное поле" }]}
+            className={styles.inputRow}
           >
-            Войти
-          </Button>
-        </Form.Item>
-      </Form>
+            <Input
+              prefix={
+                <span className={styles.inputIcon}>
+                  <MailIcon />
+                </span>
+              }
+              placeholder="test@mail.com"
+              allowClear={{ clearIcon: <ClearIcon /> }}
+              autoComplete="username"
+              className={styles.input}
+            />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            label="Пароль"
+            name="password"
+            rules={[{ required: true, message: "Обязательное поле" }]}
+            className={styles.inputRow}
+          >
+            <Input
+              type={passwordVisible ? "text" : "password"}
+              prefix={
+                <span className={styles.inputIcon}>
+                  <LockIcon />
+                </span>
+              }
+              placeholder="••••••••••"
+              autoComplete="current-password"
+              className={styles.input}
+              suffix={
+                <span
+                  className={styles.eyeSuffix}
+                  onClick={() => setPasswordVisible((v) => !v)}
+                  onMouseDown={(e) => e.preventDefault()}
+                  role="button"
+                  aria-label={
+                    passwordVisible ? "Скрыть пароль" : "Показать пароль"
+                  }
+                >
+                  <PasswordEyeIcon visible={passwordVisible} />
+                </span>
+              }
+            />
+          </Form.Item>
+
+          <Form.Item<FieldType>
+            name="remember"
+            valuePropName="checked"
+            className={styles.rememberItem}
+          >
+            <Checkbox className={styles.checkbox}>Запомнить данные</Checkbox>
+          </Form.Item>
+
+          <Form.Item className={styles.submitItem}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              size="large"
+              loading={loading}
+              className={styles.submitBtn}
+            >
+              Войти
+            </Button>
+          </Form.Item>
+        </Form>
 
         <div className={styles.separator}>
           <span className={styles.separatorLine} />
@@ -113,12 +143,16 @@ export function LoginForm() {
         </div>
 
         <p className={styles.footer}>
-          Нет аккаунта?{' '}
-          <a href="#" className={styles.link} onClick={(e) => e.preventDefault()}>
+          Нет аккаунта?{" "}
+          <a
+            href="#"
+            className={styles.link}
+            onClick={(e) => e.preventDefault()}
+          >
             Создать
           </a>
         </p>
       </div>
     </div>
-  )
+  );
 }
